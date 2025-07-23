@@ -20,7 +20,7 @@ const navigate = useNavigate();
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/orders', form, {
+      await axios.post('https://fuel-delivery-backend-98bj.onrender.com0/api/orders', form, {
         headers: {
           Authorization: `Bearer ${token}`,
         }
