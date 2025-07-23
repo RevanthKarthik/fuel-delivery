@@ -18,7 +18,7 @@ const Login = () => {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', credentials, {
+      const res = await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/login', credentials, {
         headers: {
           'Content-Type': 'application/json',
         },
