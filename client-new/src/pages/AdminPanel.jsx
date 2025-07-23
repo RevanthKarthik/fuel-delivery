@@ -22,7 +22,7 @@ const AdminPanel = () => {
   const updateStatus = async (orderId, status) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/orders/update/${orderId}`, { status }, {
+      await axios.put(`https://fuel-delivery-backend-98bj.onrender.com/api/orders/update/${orderId}`, { status }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
