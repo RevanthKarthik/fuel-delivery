@@ -24,7 +24,7 @@ const Register = () => {
     }
 
     try {
-       await axios.post(`${API_BASE_URL}/auth/register`, {
+       await axios.post('${API_BASE_URL}/auth/register', {
         name: user.name,
         email: user.email,
         password: user.password
@@ -52,7 +52,7 @@ const Register = () => {
               value={user.name}
               onChange={handleChange}
               required
-              placeholder="John Doe"
+              placeholder="Jon Snow"
             />
           </div>
 
@@ -65,7 +65,7 @@ const Register = () => {
               value={user.email}
               onChange={handleChange}
               required
-              placeholder="you@example.com"
+              placeholder="jon@gmail.com"
             />
           </div>
 
