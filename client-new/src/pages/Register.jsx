@@ -24,7 +24,7 @@ const Register = () => {
     }
 
     try {
-       await axios.post('${API_BASE_URL}/auth/register', {
+       await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/register', {
         name: user.name,
         email: user.email,
         password: user.password
