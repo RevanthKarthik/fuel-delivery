@@ -2,7 +2,7 @@ import  { useState } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+<h1> hi</h1>
 const Register = () => {
   const [user, setUser] = useState({
     name: '',
