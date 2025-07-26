@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://fuel-delivery-backend-98bj.onrender.com',
 });
 
 // Automatically log user out on 401 or network errors
