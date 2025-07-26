@@ -1,1 +1,1 @@
-cosole.log("jj");
+console.log("jj");
