@@ -1,5 +1,5 @@
 // src/api.js
-export const API_BASE_URL = 'http://localhost:5000/api';
+export const API_BASE_URL = 'https://fuel-delivery-backend-98bj.onrender.com';
 export const loginUser = async (credentials) => {
   const res = await fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
