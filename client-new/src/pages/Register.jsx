@@ -1,107 +1,49 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { API_BASE_URL } from '../api';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const [user, setUser] = useState({
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
   });
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    if (user.password !== user.confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-
     try {
-       await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/register', {
-        name: user.name,
-        email: user.email,
-        password: user.password
-      });
-
-      alert("✅ Registered successfully");
-      window.location.href = '/login';
+      await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/register', formData);
+      alert('✅ Registration successful. Please log in.');
+      navigate('/login');
     } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.error || "❌ Registration failed");
+      console.error('Registration error:', err);
+      alert('❌ Registration failed.');
     }
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-      <div className="card shadow p-4" style={{ width: '100%', maxWidth: '450px' }}>
-        <h3 className="text-center mb-4">Create an Account</h3>
-        <form onSubmit={handleRegister}>
-          <div className="mb-3">
-            <label className="form-label">Full Name</label>
-            <input
-              type="text"
-              className="form-control"
-              name="name"
-              value={user.name}
-              onChange={handleChange}
-              required
-              placeholder="Jon Snow"
-            />
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
-              required
-              placeholder="jon@gmail.com"
-            />
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={user.password}
-              onChange={handleChange}
-              required
-              placeholder="••••••••"
-            />
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label">Confirm Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="confirmPassword"
-              value={user.confirmPassword}
-              onChange={handleChange}
-              required
-              placeholder="••••••••"
-            />
-          </div>
-
-          <button type="submit" className="btn btn-success w-100">Register</button>
-
-          <div className="text-center mt-3">
-            <small>Already have an account? <a href="/login">Login</a></small>
-          </div>
-        </form>
-      </div>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Create an Account</h2>
+      <form onSubmit={handleRegister}>
+        <div className="mb-3">
+          <label>Name</label>
+          <input type="text" name="name" className="form-control" required onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label>Email</label>
+          <input type="email" name="email" className="form-control" required onChange={handleChange} />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input type="password" name="password" className="form-control" required onChange={handleChange} />
+        </div>
+        <button className="btn btn-primary w-100" type="submit">Register</button>
+      </form>
     </div>
   );
 };
