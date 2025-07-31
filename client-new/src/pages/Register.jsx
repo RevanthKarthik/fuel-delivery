@@ -1,51 +1,36 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Register = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/register', formData);
-      alert('✅ Registration successful. Please log in.');
-      navigate('/login');
-    } catch (err) {
-      console.error('Registration error:', err);
-      alert('❌ Registration failed.');
-    }
-  };
-
+function Home() {
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Create an Account</h2>
-      <form onSubmit={handleRegister}>
-        <div className="mb-3">
-          <label>Name</label>
-          <input type="text" name="name" className="form-control" required onChange={handleChange} />
-        </div>
-        <div className="mb-3">
-          <label>Email</label>
-          <input type="email" name="email" className="form-control" required onChange={handleChange} />
-        </div>
-        <div className="mb-3">
-          <label>Password</label>
-          <input type="password" name="password" className="form-control" required onChange={handleChange} />
-        </div>
-        <button className="btn btn-primary w-100" type="submit">Register</button>
-      </form>
-    </div>
-  );
-};
+    <>
+   
 
-export default Register;
+    <div className="container mt-5">
+      <div className="text-center mb-4">
+        <h1 className="display-4">🚚 Fuel Delivery App</h1>
+        <p className="lead">Fast. Reliable. At Your Doorstep.</p>
+      </div>
+
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow rounded">
+            <div className="card-body text-center">
+              <h5 className="card-title">Need Fuel ?</h5>
+              <p className="card-text">
+                Order fuel from the comfort of your home or office. We’ll deliver it safely and quickly.
+              </p>
+              <Link to="/order">
+                <button className="btn btn-primary btn-lg">Place Order</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </> 
+  );
+}
+
+export default Home;
