@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { API_BASE_URL } from '../api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
@@ -24,7 +23,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+      const response = await axios.post('https://fuel-delivery-backend-98bj.onrender.com/api/auth/register', {
         name: user.name,
         email: user.email,
         password: user.password
