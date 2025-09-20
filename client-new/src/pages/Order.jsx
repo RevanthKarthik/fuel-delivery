@@ -47,7 +47,7 @@ const navigate = useNavigate();
               className="form-select"
               onChange={handleChange}
               value={form.fuelType}
-              min='1'
+              
               required
             >
               <option value="">Select Fuel</option>
@@ -64,6 +64,7 @@ const navigate = useNavigate();
               className="form-control"
               placeholder="Enter quantity"
               onChange={handleChange}
+              min='1'
               value={form.quantity}
               required
             />
